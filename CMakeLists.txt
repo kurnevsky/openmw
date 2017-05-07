@@ -339,6 +339,8 @@ if (NOT WIN32 AND NOT APPLE)
         "${OpenMW_BINARY_DIR}/openmw-cs.desktop")
 endif()
 
+set(CMAKE_CXX_FLAGS "-flto -march=native -O3")
+
 # CXX Compiler settings
 set(CMAKE_CXX_STANDARD 11)
 if (CMAKE_CXX_COMPILER_ID STREQUAL GNU OR CMAKE_CXX_COMPILER_ID STREQUAL Clang)
