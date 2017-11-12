@@ -1120,8 +1120,12 @@ namespace MWMechanics
         if (!Misc::StringUtils::ciEqual(item.getCellRef().getRefId(), MWWorld::ContainerStore::sGoldId))
         {
             const MWWorld::Ptr victimRef = MWBase::Environment::get().getWorld()->searchPtr(ownerCellRef->getOwner(), true);
-            if (victimRef.isEmpty() || !victimRef.getClass().getCreatureStats(victimRef).isDead())
-                mStolenItems[Misc::StringUtils::lowerCase(item.getCellRef().getRefId())][owner] += count;
+            if (victimRef.isEmpty() || !victimRef.getClass().getCreatureStats(victimRef).isDead()) {
+                std::string id = Misc::StringUtils::lowerCase(item.getCellRef().getRefId());
+                mStolenItems[id][owner] += count;
+                if (mStolenItems[id][owner] <= 0)
+                    mStolenItems[id].erase(owner);
+            }
         }
         if (alarm)
             commitCrime(ptr, victim, OT_Theft, item.getClass().getValue(item) * count);
