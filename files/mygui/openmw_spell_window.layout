@@ -9,12 +9,12 @@
             <Widget type="Widget" skin="" position="2 1 264 20" align="Left Top Stretch" name="EffectsBox"/>
         </Widget>
 
-        <!-- Search box-->
-        <Widget type="EditBox" skin="MW_TextBoxEditWithBorder" position="8 37 268 23" align="Left Top HStretch" name="FilterEdit">
+        <!-- Spell list -->
+        <Widget type="SpellView" skin="MW_SpellView" position="8 38 268 490" align="Left Top Stretch" name="SpellView">
         </Widget>
 
-        <!-- Spell list -->
-        <Widget type="SpellView" skin="MW_SpellView" position="8 66 268 490" align="Left Top Stretch" name="SpellView">
+        <!-- Search box-->
+        <Widget type="EditBox" skin="MW_TextBoxEditWithBorder" position="8 493 268 23" align="Left Top HStretch" name="FilterEdit">
         </Widget>
 
     </Widget>
