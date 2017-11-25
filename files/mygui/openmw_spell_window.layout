@@ -10,9 +10,7 @@
         </Widget>
 
         <!-- Search box-->
-        <Widget type="EditBox" skin="MW_Box" position="8 37 268 23" align="Left Top HStretch">
-            <Widget type="EditBox" skin="MW_TextBoxEdit" position="2 1 264 20" align="Left Top HStretch" name="FilterEdit">
-            </Widget>
+        <Widget type="EditBox" skin="MW_TextBoxEditWithBorder" position="8 37 268 23" align="Left Top HStretch" name="FilterEdit">
         </Widget>
 
         <!-- Spell list -->
