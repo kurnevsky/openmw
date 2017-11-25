@@ -35,6 +35,7 @@ namespace MWGui
     class SpellModel
     {
     public:
+        SpellModel(const MWWorld::Ptr& actor, const std::string& filter);
         SpellModel(const MWWorld::Ptr& actor);
 
         typedef int ModelIndex;
@@ -47,9 +48,13 @@ namespace MWGui
         size_t getItemCount() const;
 
     private:
+        bool findFilter(std::string& str);
+
         MWWorld::Ptr mActor;
 
         std::vector<Spell> mSpells;
+
+        std::string mFilter;
     };
 
 }

@@ -2,6 +2,7 @@
 
 #include <boost/format.hpp>
 
+#include <MyGUI_EditBox.h>
 #include <MyGUI_InputManager.h>
 
 #include <components/settings/settings.hpp>
@@ -38,8 +39,10 @@ namespace MWGui
 
         getWidget(mSpellView, "SpellView");
         getWidget(mEffectBox, "EffectsBox");
+        getWidget(mFilterEdit, "FilterEdit");
 
         mSpellView->eventSpellClicked += MyGUI::newDelegate(this, &SpellWindow::onModelIndexSelected);
+        mFilterEdit->eventEditTextChange += MyGUI::newDelegate(this, &SpellWindow::onFilterChanged);
 
         setCoord(498, 300, 302, 300);
     }
@@ -82,7 +85,7 @@ namespace MWGui
     {
         mSpellIcons->updateWidgets(mEffectBox, false);
 
-        mSpellView->setModel(new SpellModel(MWMechanics::getPlayer()));
+        mSpellView->setModel(new SpellModel(MWMechanics::getPlayer(), mFilterEdit->getCaption()));
     }
 
     void SpellWindow::onEnchantedItemSelected(MWWorld::Ptr item, bool alreadyEquipped)
@@ -167,6 +170,11 @@ namespace MWGui
         }
     }
 
+    void SpellWindow::onFilterChanged(MyGUI::EditBox *sender)
+    {
+        mSpellView->setModel(new SpellModel(MWMechanics::getPlayer(), sender->getCaption()));
+    }
+
     void SpellWindow::onSpellSelected(const std::string& spellId)
     {
         MWWorld::Ptr player = MWMechanics::getPlayer();
@@ -202,7 +210,7 @@ namespace MWGui
         if (stats.isParalyzed() || stats.getKnockedDown() || stats.isDead() || stats.getHitRecovery())
             return;
 
-        mSpellView->setModel(new SpellModel(MWMechanics::getPlayer()));
+        mSpellView->setModel(new SpellModel(MWMechanics::getPlayer(), mFilterEdit->getCaption()));
 
         SpellModel::ModelIndex selected = 0;
         for (SpellModel::ModelIndex i = 0; i<int(mSpellView->getModel()->getItemCount()); ++i)

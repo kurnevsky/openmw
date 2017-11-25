@@ -32,10 +32,29 @@ namespace
 namespace MWGui
 {
 
+    SpellModel::SpellModel(const MWWorld::Ptr &actor, const std::string& filter)
+        : mActor(actor), mFilter(filter)
+    {
+    }
+
     SpellModel::SpellModel(const MWWorld::Ptr &actor)
         : mActor(actor)
     {
+    }
 
+    bool SpellModel::findFilter(std::string& str)
+    {
+        if (mFilter.empty())
+            return true;
+
+        std::size_t index = str.find(mFilter);
+        if (index == std::string::npos)
+            return false;
+
+        // TODO: make colors configurable
+        str.insert(index, "#FFFFFF");
+        str.insert(index+7+mFilter.size(), "#CAA560");
+        return true;
     }
 
     void SpellModel::update()
@@ -54,8 +73,13 @@ namespace MWGui
             if (spell->mData.mType != ESM::Spell::ST_Power && spell->mData.mType != ESM::Spell::ST_Spell)
                 continue;
 
+            std::string str = spell->mName;
+
+            if (!findFilter(str))
+                continue;
+
             Spell newSpell;
-            newSpell.mName = spell->mName;
+            newSpell.mName = str;
             if (spell->mData.mType == ESM::Spell::ST_Spell)
             {
                 newSpell.mType = Spell::Type_Spell;
@@ -89,10 +113,15 @@ namespace MWGui
             if (enchant->mData.mType != ESM::Enchantment::WhenUsed && enchant->mData.mType != ESM::Enchantment::CastOnce)
                 continue;
 
+            std::string str = item.getClass().getName(item);
+
+            if (!findFilter(str))
+                continue;
+
             Spell newSpell;
             newSpell.mItem = item;
             newSpell.mId = item.getCellRef().getRefId();
-            newSpell.mName = item.getClass().getName(item);
+            newSpell.mName = str;
             newSpell.mType = Spell::Type_EnchantedItem;
             newSpell.mSelected = invStore.getSelectedEnchantItem() == it;
 
