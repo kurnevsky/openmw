@@ -48,8 +48,6 @@ namespace MWGui
         size_t getItemCount() const;
 
     private:
-        bool findFilter(std::string& str);
-
         MWWorld::Ptr mActor;
 
         std::vector<Spell> mSpells;
