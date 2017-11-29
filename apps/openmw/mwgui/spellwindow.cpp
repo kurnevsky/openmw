@@ -69,6 +69,11 @@ namespace MWGui
 
     void SpellWindow::onOpen()
     {
+        // Reset the filter focus when opening the window
+        MyGUI::Widget* focus = MyGUI::InputManager::getInstance().getKeyFocusWidget();
+        if (focus == mFilterEdit)
+            MWBase::Environment::get().getWindowManager()->setKeyFocusWidget(NULL);
+
         updateSpells();
     }
 
