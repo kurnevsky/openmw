@@ -14,7 +14,7 @@
         </Widget>
 
         <!-- Search box-->
-        <Widget type="EditBox" skin="MW_TextBoxEditWithBorder" position="8 493 268 23" align="Left Top HStretch" name="FilterEdit">
+        <Widget type="EditBox" skin="MW_TextBoxEditWithBorder" position="8 535 268 23" align="Left Bottom HStretch" name="FilterEdit">
         </Widget>
 
     </Widget>
