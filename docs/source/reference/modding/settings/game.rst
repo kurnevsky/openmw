@@ -197,6 +197,20 @@ For example, if the main animation mesh has name Meshes/x.nif,
 the engine will load all KF-files from Animations/x folder and its child folders.
 This can be useful if you want to use several animation replacers without merging them.
 Attention: animations from AnimKit have their own format and are not supposed to be directly loaded in-game!
+
+This setting can only be configured by editing the settings configuration file.
+
+restore projectiles
+-------------------
+
+:Type:		boolean
+:Range:		True/False
+:Default:	False
+
+If enabled, spawns projectile in the hit position, if the target is not actor.
+The player can not restore projectile, if the hit object is a water or lava.
+Can alter game balance and decrease performance.
+
 This setting can only be configured by editing the settings configuration file.
 
 barter disposition change is permanent
