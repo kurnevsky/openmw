@@ -17,6 +17,7 @@
 #include "transformationextensions.hpp"
 #include "consoleextensions.hpp"
 #include "userextensions.hpp"
+#include "mwseextensions.hpp"
 
 namespace MWScript
 {
@@ -35,6 +36,7 @@ namespace MWScript
         Dialogue::installOpcodes (interpreter);
         Animation::installOpcodes (interpreter);
         Transformation::installOpcodes (interpreter);
+        ScriptExtender::Math::installOpcodes(interpreter);
 
         if (consoleOnly)
         {

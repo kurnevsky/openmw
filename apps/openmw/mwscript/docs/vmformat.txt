@@ -459,5 +459,14 @@ op 0x2000308: ToggleNavMesh
 op 0x2000309: ToggleActorsPaths
 op 0x200030a: SetNavMeshNumber
 op 0x200030b: Journal, explicit
+op 0x2050001: xHypot
+op 0x2050002: xDegRad
+op 0x2050003: xRadDeg
+op 0x2050004: xCos
+op 0x2050005: xSin
+op 0x2050006: xTan
+op 0x2050007: xArcCos
+op 0x2050008: xArcSin
+op 0x2050009: xArcTan
 
 opcodes 0x200030c-0x3ffffff unused

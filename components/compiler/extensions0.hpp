@@ -76,6 +76,14 @@ namespace Compiler
     {
         void registerExtensions (Extensions& extensions);
     }
+
+    namespace ScriptExtender
+    {
+        namespace Math
+        {
+            void registerExtensions (Extensions& extensions);
+        }
+    }
 }
 
 #endif
